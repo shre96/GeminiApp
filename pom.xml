@@ -1,58 +1,63 @@
-project xmlns=httpmaven.apache.orgPOM4.0.0 xmlnsxsi=httpwww.w3.org2001XMLSchema-instance
-  xsischemaLocation=httpmaven.apache.orgPOM4.0.0 httpmaven.apache.orgmaven-v4_0_0.xsd
-  modelVersion4.0.0modelVersion
-  groupIdcom.examplegroupId
-  artifactIdJtProjectartifactId
-  packagingwarpackaging
-  version1.0-SNAPSHOTversion
-  nameJtProject Maven Webappname
-  urlhttpmaven.apache.orgurl
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  dependencies
-    !-- Servlet API for the web application --
-    dependency
-      groupIdjavax.servletgroupId
-      artifactIdjavax.servlet-apiartifactId
-      version3.1.0version
-      scopeprovidedscope
-    dependency
+    <groupId>com.example</groupId>
+    <artifactId>JtProject</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
-    !-- JUnit for testing --
-    dependency
-      groupIdjunitgroupId
-      artifactIdjunitartifactId
-      version4.13.2version
-      scopetestscope
-    dependency
-  dependencies
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
-  build
-    finalNameJtProjectfinalName
-    plugins
-      !-- Compiler plugin to specify Java version --
-      plugin
-        groupIdorg.apache.maven.pluginsgroupId
-        artifactIdmaven-compiler-pluginartifactId
-        version3.8.1version
-        configuration
-          source1.8source
-          target1.8target
-        configuration
-      plugin
+    <dependencies>
+        <!-- Servlet API -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
 
-      !-- WAR plugin to package the application as a .war file --
-      plugin
-        groupIdorg.apache.maven.pluginsgroupId
-        artifactIdmaven-war-pluginartifactId
-        version3.3.1version
-      plugin
+        <!-- JUnit for testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
-      !-- Surefire plugin for running tests --
-      plugin
-        groupIdorg.apache.maven.pluginsgroupId
-        artifactIdmaven-surefire-pluginartifactId
-        version2.22.2version
-      plugin
-    plugins
-  build
-project
+    <build>
+        <finalName>JtProject</finalName>
+        <plugins>
+            <!-- Maven Compiler Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <!-- Maven WAR Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.1</version>
+            </plugin>
+            <!-- Tomcat 8 Maven Plugin for local testing (optional) -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat8-maven-plugin</artifactId>
+                <version>3.0-r1756463</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
